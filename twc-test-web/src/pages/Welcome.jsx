@@ -33,7 +33,7 @@ const Welcome = () => {
           
         </div>
         
-        <div className='flex w-133 h-50 mt-94 ml-1180 text-custom-501'>
+        <div className='flex w-133 h-50 mb-31 ml-1180 text-custom-501'>
             <img src={log_out} alt="" />
             <a href="/login" className="gap-10 p-10 text-2xl underline">Logout</a>
 

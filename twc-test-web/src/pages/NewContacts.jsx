@@ -7,7 +7,7 @@ import log_out from '../assets/images/bx_log-out-circle.png'
 
 const NewContacts = () => {
   return (
-    <div className="flex h-768 ">
+    <div className="flex h-768 bg-custom-500 ">
       <div className="w-full bg-custom-500 ">
         <div className=" w-138 h-91.57 mt-72 ml-204 ">
             <div className=' w-72.94 h-24.03 mt-0 ml-0 flex'>
@@ -19,9 +19,9 @@ const NewContacts = () => {
             </div>
             
         </div>
-        <div className=' text-custom-501 w-951 h-304 mt-81.43 ml-204'>
+        <div className=' text-custom-501 w-951 h-304 mt-71.43 ml-204'>
            <div className='w-950 h-180 font-weight-700'>
-                <div className='text-5xl font-bold text-left font-futura leading-73'><p className='text-5xl '>New Contact</p>
+                <div className='text-5xl font-bold text-left w-324 h-73 font-futura leading-73'><p className='text-5xl '>New Contact</p>
                 </div>
                 <div className='flex '>
                 <input
@@ -30,7 +30,7 @@ const NewContacts = () => {
                   placeholder="Full Name"
                   value=''
                   onChange=''
-                  className="rounded-full pl-41 bg-custom-501 mt-95 w-477 h-55"
+                  className="rounded-full pl-41 bg-custom-501 mt-61 w-477 h-55"
                   required
                   />
                   <input
@@ -39,7 +39,7 @@ const NewContacts = () => {
                   placeholder="e-mail"
                   value=''
                   onChange=''
-                  className="rounded-full pl-41 bg-custom-501 w-477 h-55 mt-95 ml-35"
+                  className="rounded-full pl-41 bg-custom-501 w-477 h-55 mt-61 ml-35"
                   required
                   />
                 </div>
@@ -91,7 +91,6 @@ const NewContacts = () => {
          
           
         </div>
-        
         <div className='flex w-133 h-50 mt-94 ml-1180 text-custom-501'>
             <img src={log_out} alt="" />
             <a href="/login" className="gap-10 p-10 text-2xl underline">Logout</a>
@@ -99,7 +98,10 @@ const NewContacts = () => {
 
 
         </div>
+        
+        
       </div>
+      
       </div>
   )
 }
