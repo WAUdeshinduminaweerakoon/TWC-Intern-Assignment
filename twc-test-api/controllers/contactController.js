@@ -23,4 +23,22 @@ exports.createContact = async (req, res) => {
 };
 
 
+exports.deleteContact = async (req, res) => {
+    try {
+        const { email } = req.params;
+        const deletedContact = await ContactModel.findOne({email});
+
+        if (!deletedContact) {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+
+        res.status(200).json({ message: 'Contact deleted successfully', contact: deletedContact });
+    } catch (error) {
+        console.error('Error deleting contact:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+
+
 
