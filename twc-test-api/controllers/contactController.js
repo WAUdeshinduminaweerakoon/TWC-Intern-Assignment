@@ -38,6 +38,16 @@ exports.deleteContact = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+//http://localhost:3002/Contact/contacts/udedsccdcssh@gmail.com
+exports.getAllContact = async (req, res)=>{
+    try{
+        const contact = await ContactModel.find();
+        res.json(contact);
+
+    }catch (error) {
+             res.status(500).json({ error: error.message });
+    }
+}
 
 
 
