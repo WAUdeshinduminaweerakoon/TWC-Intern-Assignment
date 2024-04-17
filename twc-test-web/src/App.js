@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Welcome from "./pages/Welcome";
 import Contacts from "./pages/Contacts";
 import NewContacts from "./pages/NewContacts";
+import ContactsBgComponents from "./components/ContactsBgComponents";
+import WelcomeComponents from "./components/WelcomeComponents";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/contacts" element={<Contacts/>}/>
         <Route path="/contacts/new" element={<NewContacts/>}/>
+        <Route path="/ContactsBgComponents" element={<ContactsBgComponents/>}/>
+        <Route path="/WelcomeComponents" element={<WelcomeComponents/>}/>
 
       </Routes>
     </BrowserRouter>
