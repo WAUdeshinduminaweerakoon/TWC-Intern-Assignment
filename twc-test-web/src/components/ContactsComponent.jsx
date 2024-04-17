@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import male from '../assets/images/male.png'
 import female from '../assets/images/female.png'
+import delet from '../assets/images/delete.png'
+import edit from '../assets/images/edit.png'
 
 
 const ContactsComponent = () => {
@@ -77,59 +79,78 @@ const ContactsComponent = () => {
         </div>
       </div>
   
-        <div className='rounded-xl w-995 h-316 mt-23 ml-204 bg-custom-501'>
-          <table>
-          <thead className="mt-12 bg-slate-500 w-735 h-50 ml-140">
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Full Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">E-mail</th>
-              <th scope="col">Phone number</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-            <tbody>
-              {contacts.map(contact => (
-                <tr key={contact.email}>
-                  <td><img src={getGenderImage(contact.gender)} alt={contact.gender} /></td>
-                  <td>
-                    {editedContact === contact ? (
-                      <input type="text" value={editedContact.fullName} onChange={(e) => handleInputChange(e, 'fullName')} />
-                    ) : contact.fullName}
-                  </td>
-                  <td>
-                    {editedContact === contact ? (
-                      <select value={editedContact.gender} onChange={(e) => handleInputChange(e, 'gender')}>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </select>
-                    ) : contact.gender}
-                  </td>
-                  <td>
-                    {editedContact === contact ? (
-                      <input type="email" value={editedContact.email} onChange={(e) => handleInputChange(e, 'email')} />
-                    ) : contact.email}
-                  </td>
-                  <td>
-                    {editedContact === contact ? (
-                      <input type="tel" value={editedContact.phoneNumber} onChange={(e) => handleInputChange(e, 'phoneNumber')} />
-                    ) : contact.phoneNumber}
-                  </td>
-                    <td>
+        <div className='overflow-y-auto rounded-xl w-995 h-316 mt-23 ml-204 bg-custom-501'>
+            <table className="w-full text-custom-500">
+                <thead className="">
+                <tr>
+                    <th className="px-4 py-2"></th>
+                    <th className="px-4 py-2">Full Name</th>
+                    <th className="px-4 py-2">Gender</th>
+                    <th className="px-4 py-2">E-mail</th>
+                    <th className="px-4 py-2">Phone number</th>
+                    <th className="px-4 py-2"></th>
+                </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                {contacts.map(contact => (
+                    <tr key={contact.email}>
+                    <td className="w-48 h-48 ">
+                        <img src={getGenderImage(contact.gender)} alt={contact.gender} />
+                    </td>
+                    <td className="px-6 py-4">
                         {editedContact === contact ? (
-                            <button onClick={handleUpdateContact}>Save</button>
-                            ) : (
-                                <>
-                                    <button onClick={() => handleEdit(contact)}>Edit</button>
-                                    <button onClick={() => handleDeleteContact(contact.email)}>Delete</button>
-                                </>
+                        <input type="text" value={editedContact.fullName} onChange={(e) => handleInputChange(e, 'fullName')} className="w-full" />
+                        ) : (
+                        <span>{contact.fullName}</span>
                         )}
                     </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <td className="px-4 py-2">
+                        {editedContact === contact ? (
+                        <select value={editedContact.gender} onChange={(e) => handleInputChange(e, 'gender')} className="w-full">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        ) : (
+                        <span>{contact.gender}</span>
+                        )}
+                    </td>
+                    <td className="px-4 py-2">
+                        {editedContact === contact ? (
+                        <input type="email" value={editedContact.email} onChange={(e) => handleInputChange(e, 'email')} className="w-full" />
+                        ) : (
+                        <span>{contact.email}</span>
+                        )}
+                    </td>
+                    <td className="px-4 py-2">
+                        {editedContact === contact ? (
+                        <input type="tel" value={editedContact.phoneNumber} onChange={(e) => handleInputChange(e, 'phoneNumber')} className="w-full" />
+                        ) : (
+                        <span>{contact.phoneNumber}</span>
+                        )}
+                    </td>
+                       <td>
+                        {editedContact === contact ? (
+                            <button onClick={handleUpdateContact}>
+                            save
+                            </button>
+                        ) : (
+                            <>
+                            <button onClick={() => handleEdit(contact)}>
+                                <img src={edit} alt="Edit" />
+                            </button>
+                            <button onClick={() => handleDeleteContact(contact.email)}>
+                                <img src={delet} alt="Delete" />
+                            </button>
+                            </>
+                        )}
+                        </td>
+
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+
+
         </div>
       </>
     );
