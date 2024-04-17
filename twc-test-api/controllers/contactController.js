@@ -38,7 +38,9 @@ exports.deleteContact = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-//http://localhost:3002/Contact/contacts/udedsccdcssh@gmail.com
+//http://localhost:3002/Contact/contacts/email
+
+
 exports.getAllContact = async (req, res)=>{
     try{
         const contact = await ContactModel.find();
@@ -48,7 +50,30 @@ exports.getAllContact = async (req, res)=>{
              res.status(500).json({ error: error.message });
     }
 }
+//http://localhost:3002/Contact/allContacts
 
 
+exports.updateContact = async (req, res) => {
+    try {
+        const { email } = req.params;
+        const { fullName, phoneNumber, gender } = req.body;
 
+        const updatedContact = await ContactModel.findOneAndUpdate(
+            { email },
+            { fullName, phoneNumber, gender },
+            { new: true }
+        );
+
+        if (!updatedContact) {
+            return res.status(404).json({ message: 'Contact not found' });
+        }
+
+        res.status(200).json({ message: 'Contact updated successfully', contact: updatedContact });
+    } catch (error) {
+        console.error('Error updating contact:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+http://localhost:3002/Contact/contacts/email
 
