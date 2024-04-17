@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const contactRoutes = require('./routes/contactRoutes');
+const registerRoutes = require('./routes/registerRoutes')
 const cors = require('cors');
 require('dotenv').config();
 
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 });
 
 app.use("/contact", contactRoutes);
+app.use("/register",registerRoutes);
 
 module.exports = app;
 

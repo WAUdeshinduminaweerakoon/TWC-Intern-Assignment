@@ -14,7 +14,7 @@ const registerSchema = new Schema({
 
       },
 //     TODO: password hashing
-       confirm password:{
+       confirmPassword:{
             type: String,
             required: true,
             unique: true
@@ -22,4 +22,4 @@ const registerSchema = new Schema({
 })
 
 const RegisterModel = mongoose.model('Register', registerSchema);
-model.exports = RegisterModel;
+module.exports = RegisterModel;
