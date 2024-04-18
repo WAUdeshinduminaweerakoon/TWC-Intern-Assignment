@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
 
-
 const NewContactsComponent = () => {
-
   const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState(false); // State for tracking submission success
 
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
@@ -39,10 +38,12 @@ const NewContactsComponent = () => {
       });
 
       console.log('Contact created successfully:', response.data);
-      navigate('/contacts');
+      setSubmitSuccess(true); // Set submit success to true
+      setTimeout(() => {
+        navigate('/contacts'); // Navigate to Contacts page after a short delay
+      }, 2000); // Change delay time as needed
     } catch (error) {
       console.error('Error creating contact:', error.response.data.message);
-      
     }
   };
 
@@ -53,6 +54,8 @@ const NewContactsComponent = () => {
           <p className='text-5xl '>New Contact</p>
         </div>
         <form onSubmit={handleSubmit}>
+          {/* Add success message if submission is successful */}
+          {submitSuccess && <p>Submit success! Full: {fullName}</p>}
           <div className='flex'>
             <input
               type="text"
@@ -110,7 +113,7 @@ const NewContactsComponent = () => {
             </div>
           </div>
           <div className='border border-custom-501 rounded-full text-center  h-48.1 w-323 mt-78 p-10 gap-10'>
-            <button type="submit" className="gap-10 p-10 text-2xl">Add your first contact</button>
+            <button type="submit" className="gap-10 text-2xl">Add your first contact</button>
           </div>
         </form>
       </div>

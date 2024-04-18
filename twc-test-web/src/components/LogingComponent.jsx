@@ -65,7 +65,7 @@ const LoginComponent = () => {
           />
         </div>
         <div className='flex mt-57 h-50'>
-          <button type="submit" className='pt-4 text-center border rounded-full w-131'>
+          <button type="submit" className='pt-0 text-2xl font-bold text-center border rounded-full w-131'>
             Login
           </button>
           <div className='w-281 ml-18'>
