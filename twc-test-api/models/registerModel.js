@@ -10,7 +10,7 @@ const registerSchema = new Schema({
       password:{
             type: String,
             required: true,
-            unique: true
+
 
       },
 //     TODO: password hashing
