@@ -17,7 +17,7 @@ const registerSchema = new Schema({
        confirmPassword:{
             type: String,
             required: true,
-            unique: true
+
        },
 })
 

@@ -1,36 +1,33 @@
+// registerController.js
+
 const RegisterModel = require('../models/RegisterModel');
 
 exports.createRegister = async (req, res) => {
     try {
-        console.log("Request received:", req.body);
         const { email, password, confirmPassword } = req.body;
 
-        if (password !== confirmPassword) {
-            console.log("Password and confirm password do not match");
-            return res.status(400).json({ message: 'Password and confirm password do not match' });
-        }
-
+        // Check if the email already exists
         const existingRegister = await RegisterModel.findOne({ email });
         if (existingRegister) {
-            console.log("Email already exists:", email);
             return res.status(400).json({ message: 'Email already exists' });
         }
 
-
+        // Create a new register instance
         const newRegister = new RegisterModel({ email, password, confirmPassword });
+
+        // Save the new register to the database
         await newRegister.save();
 
-        console.log("Registration successful:", newRegister);
+        // Send a success response
         res.status(201).json({ message: 'Register created successfully', register: newRegister });
     } catch (error) {
-        if (error.code === 11000 && error.keyPattern && error.keyValue) {
-            console.log("Duplicate key error:", error);
-            return res.status(400).json({ message: 'Email already exists' });
-        }
         console.error('Error creating Register:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+
+
 
 
 //http://localhost:3002/Register

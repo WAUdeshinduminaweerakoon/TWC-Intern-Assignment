@@ -1,13 +1,21 @@
 import React from 'react'
 import backgroundImage from '../assets/images/back.png';
 import logo from '../assets/images/Group 1.png'
+import bg2 from '../assets/images/bg2.png'
 
 const LoginBgcomponent = ({ children }) => {
   return (
     <div className="flex h-screen">
-    <div className="flex w-1/2 bg-custom-500">
-      {children} 
+      <div
+      className="relative bg-cover z-1 rounded-r-xl"
+      style={{
+        backgroundImage: `url(${bg2})`,
+        opacity: 10,
+      }}
+    >
+      {children}
     </div>
+    
     <div
       className="relative w-1/2 bg-cover rounded-r-xl"
       style={{

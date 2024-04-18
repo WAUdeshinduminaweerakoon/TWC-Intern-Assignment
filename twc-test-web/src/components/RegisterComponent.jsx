@@ -25,7 +25,7 @@ const RegisterComponent = () => {
       if (formData.password !== formData.confirmPassword) {
         throw new Error('Password and confirm password do not match');
       }
-      const response = await axios.post('http://localhost:3002/Register', formData);
+      const response = await axios.post('http://localhost:3002/register', formData);
       console.log('Registration successful:', response.data);
       navigate('/login');
     } catch (error) {
