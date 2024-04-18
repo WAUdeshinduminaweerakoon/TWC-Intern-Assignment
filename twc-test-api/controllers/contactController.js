@@ -22,11 +22,10 @@ exports.createContact = async (req, res) => {
     }
 };
 
-
 exports.deleteContact = async (req, res) => {
     try {
         const { email } = req.params;
-        const deletedContact = await ContactModel.findOne({email});
+        const deletedContact = await ContactModel.findOneAndDelete({ email });
 
         if (!deletedContact) {
             return res.status(404).json({ message: 'Contact not found' });
@@ -38,20 +37,16 @@ exports.deleteContact = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-//http://localhost:3002/Contact/contacts/email
 
-
-exports.getAllContact = async (req, res)=>{
-    try{
-        const contact = await ContactModel.find();
-        res.json(contact);
-
-    }catch (error) {
-             res.status(500).json({ error: error.message });
+exports.getAllContact = async (req, res) => {
+    try {
+        const contacts = await ContactModel.find();
+        res.status(200).json(contacts);
+    } catch (error) {
+        console.error('Error retrieving contacts:', error);
+        res.status(500).json({ message: 'Server error' });
     }
-}
-//http://localhost:3002/Contact/allContacts
-
+};
 
 exports.updateContact = async (req, res) => {
     try {
@@ -74,6 +69,3 @@ exports.updateContact = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-
-http://localhost:3002/Contact/contacts/email
-
