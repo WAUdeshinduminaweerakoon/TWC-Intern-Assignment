@@ -4,9 +4,9 @@ const LogingComponent = () => {
   return (
     <div className=' w-477 h-487 mt-140 ml-122 text-custom-501'>
        <div className='mt-0 ml-0 w-253 h-157'>
-            <p className='text-5xl '>Hi there,</p>
-            <p className='text-2xl '>Welcome to our</p>
-            <p className='text-2xl '>contacts portal</p>
+            <p className='text-6xl font-bold '>Hi there,</p>
+            <p className='pt-3 text-3xl font-bold '>Welcome to our</p>
+            <p className='pt-3 text-3xl font-bold'>contacts portal</p>
        </div>
        <div>
             <input
